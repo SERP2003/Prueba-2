@@ -1,0 +1,216 @@
+<Ui>:
+    MainScreen:
+    CitaScreen:
+    PacienteScreen:
+    HoyScreen:
+
+
+<MainScreen>:
+    name: "main_screen"
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 20
+        padding: 20
+        Button:
+            text: "Añadir Paciente"
+            size_hint: (1, 0.2)
+            background_color: (1, 0, 1, 1)
+            on_press: app.ir_añadir_paciente()
+        Button:
+            text: "Añadir cita"
+            size_hint: (1, 0.2)
+            background_color: (1, 0, 1, 1)
+            on_press: app.ir_buscar_paciente()
+        Button:
+            text: "Consultas de hoy"
+            size_hint: (1, 0.2)
+            background_color: (1, 0, 1, 1)
+            on_press: app.hoy()
+        Button:
+            text: "Enviar todo"
+            size_hint: (1, 0.2)
+            background_color: (1, 0, 1, 1)
+            on_press: app.enviar()
+
+<CitaScreen>:
+    name: "cita_screen"
+    FloatLayout:
+
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: None, None
+            pos_hint: {'center_x': 0.5, 'top': 1.0}  # Alinea en la parte superior
+
+            Label:
+                text: 'Ingrese Cedula o nombre del paciente:'
+                size_hint_y: None
+                height: 30
+
+            TextInput:
+                hint_text: 'Escribe aquí'
+                size_hint: None,None
+                width: 300
+                height: 40  # Reducir la altura de la caja de texto
+                pos_hint: {'center_x': 0.5}  # Centra la caja de texto horizontalmente
+
+        Button:
+            text: 'Añadir paciente'
+            size_hint: None, None
+            height: 50
+            width: 200
+            pos_hint: {'center_x': 0.5, 'y': 0.1}  # Alinea en la parte inferior
+            on_press: app.ir_añadir_paciente()
+
+<PacienteScreen>:
+    name: "paciente_screen"
+    FloatLayout:
+        canvas.before:
+            Color:
+                rgba: 0.2, 0.6, 1, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Label:
+            text: "ID"
+            font_size: sp(16)
+            size_hint: 0.3, 0.05
+            pos_hint: {"x": 0.05, "top": 0.95}
+            text_size: self.size
+            halign: "left"
+            valign: "middle"
+
+        TextInput:
+
+            font_size: sp(16)
+            size_hint: 0.3, 0.05
+            pos_hint: {"right": 0.56, "top": 0.95}
+
+
+        Label:
+            text: "Nombre"
+            font_size: sp(16)
+            size_hint: 0.3, 0.05
+            pos_hint: {"x": 0.05, "top": 0.85}
+            text_size: self.size
+            halign: "left"
+            valign: "middle"
+
+        TextInput:
+            text: ""
+            font_size: sp(16)
+            size_hint: 0.3, 0.05
+            pos_hint: {"right": 0.56, "top": 0.85}
+
+        Label:
+            text: "Sexo"
+            font_size: sp(16)
+            size_hint: 0.3, 0.05
+            pos_hint: {"x": 0.05, "top": 0.75}
+            text_size: self.size
+            halign: "left"
+            valign: "middle"
+
+        Spinner:
+            text: "Seleccione una opción"
+            values: ["Masculino", "Femenino"]
+            font_size: sp(16)
+            size_hint: 0.3, 0.05
+            pos_hint: {"right": 0.56, "top": 0.75}
+
+        Label:
+            text: "Fecha de nacimiento"
+            font_size: sp(16)
+            size_hint: 0.3, 0.05
+            pos_hint: {"x": 0.05, "top": 0.65}
+            text_size: self.size
+            halign: "left"
+            valign: "middle"
+
+        TextInput:
+            text: ""
+            font_size: sp(16)
+            size_hint: 0.3, 0.05
+            pos_hint: {"right": 0.56, "top": 0.65}
+
+        Label:
+            text: "Etnia"
+            font_size: sp(16)
+            size_hint: 0.3, 0.05
+            pos_hint: {"x": 0.05, "top": 0.55}
+            text_size: self.size
+            halign: "left"
+            valign: "middle"
+
+        Spinner:
+            text: "Seleccione una opción"
+            values: ["Blanca", "Negra", "Mestiza", "Indígena", "Otra"]
+            font_size: sp(16)
+            size_hint: 0.3, 0.05
+            pos_hint: {"right": 0.56, "top": 0.55}
+
+        Label:
+            text: "Tipo de sangre"
+            font_size: sp(16)
+            size_hint: 0.3, 0.05
+            pos_hint: {"x": 0.05, "top": 0.45}
+            text_size: self.size
+            halign: "left"
+            valign: "middle"
+
+        Spinner:
+            text: "Seleccione una opción"
+            values: ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"]
+            font_size: sp(16)
+            size_hint: 0.3, 0.05
+            pos_hint: {"right": 0.56, "top": 0.45}
+
+        Label:
+            text: "Alergias"
+            font_size: sp(16)
+            size_hint: 0.3, 0.05
+            pos_hint: {"x": 0.05, "top": 0.35}
+            text_size: self.size
+            halign: "left"
+            valign: "middle"
+
+        TextInput:
+            text: ""
+            font_size: sp(16)
+            size_hint: 0.3, 0.05
+            pos_hint: {"right": 0.56, "top": 0.35}
+
+        Label:
+            text: "Medicamentos"
+            font_size: sp(16)
+            size_hint: 0.3, 0.05
+            pos_hint: {"x": 0.05, "top": 0.25}
+            text_size: self.size
+            halign: "left"
+            valign: "middle"
+
+        TextInput:
+            text: ""
+            font_size: sp(16)
+            size_hint: 0.3, 0.05
+            pos_hint: {"right": 0.56, "top": 0.25}
+
+        Label:
+            text: "Enfermedades crónicas"
+            font_size: sp(16)
+            size_hint: 0.3, 0.05
+            pos_hint: {"x": 0.05, "top": 0.15}
+            text_size: self.size
+            halign: "left"
+            valign: "middle"
+
+        TextInput:
+            text: ""
+            font_size: sp(16)
+            size_hint: 0.3, 0.05
+            pos_hint: {"right": 0.56, "top": 0.15}
+
+        
+
+<HoyScreen>:
+    name: "hoy_screen"
